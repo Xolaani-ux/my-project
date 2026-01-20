@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -20,16 +20,16 @@ body {
   transition: background-color 0.58s ease;
 }
 
-.container{
+.container {
   text-align: center;     
 }
 
-.panel{
+.panel {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
 }
 
-.logo-container{
+.logo-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,9 +38,15 @@ body {
 .logo-container img {
   width: auto;
   height: 140px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.brand-name-container{
+.logo-container img:hover {
+  transform: scale(1.05);
+}
+
+.brand-name-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,28 +67,83 @@ body {
   margin-left: 25px;
 }
 
-.stinger{
+.stinger {
   font-family: 'Outfit', sans-serif;
 }
 
-.agera{
+.agera {
   font-family: 'Orbitron', sans-serif;
 }
 
-.car-container{
+.car-container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 350px;
 }
 
-.car-container img{
+.car-container img {
   height: 350px;      
   width: auto;
   max-width: 100%;
 }
 
-.page-number-container{
+.specs-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+  margin-top: 0;
+}
+
+.specs-container.show {
+  max-height: 500px;
+  opacity: 1;
+  margin-top: 30px;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 40px;
+}
+
+.spec-item {
+  text-align: center;
+  padding: 20px 10px;
+  border-top: 2px solid #000;
+  transition: border-color 0.3s ease;
+}
+
+.bugatti .spec-item {
+  border-top-color: #fff;
+}
+
+.spec-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #666;
+  margin-bottom: 8px;
+  font-weight: 300;
+}
+
+.bugatti .spec-label {
+  color: #999;
+}
+
+.spec-value {
+  font-size: 20px;
+  font-weight: 200;
+  color: #000;
+}
+
+.bugatti .spec-value {
+  color: #fff;
+}
+
+.page-number-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,4 +215,17 @@ body {
 
 .bugatti .model-name {
   color: #fff;
+}
+
+@media (max-width: 900px) {
+  .specs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .specs-grid {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
 }
